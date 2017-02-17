@@ -1,0 +1,104 @@
+/* List */
+.list-display {
+  list-style: none;
+  padding: 0;
+  width: 45%;
+
+  li {
+    transition: all 0.5s ease-in-out;
+    padding: 10px;
+    min-width: 170px;
+
+    span {
+      @util size(40px, 20px);
+
+      display: inline-block;
+      background-color: lightgreen;
+      margin-right: 10px;
+      opacity: 0;
+      transform: translateX(50px);
+      pointer-events: none;
+
+      &::after {
+        @util position(relative, 0 null null 12px);
+
+        content: '✓';
+        color: white;
+      }
+    }
+
+    .fa {
+      transition: opacity 0.5s ease-in-out;
+      opacity: 0;
+      float: right;
+      font-size: 1.2em;
+      margin-left: 8px;
+
+      &:hover {
+        font-size: 1.5em;
+      }
+    }
+
+    &:hover {
+      text-decoration: line-through;
+      color: gray;
+      cursor: pointer;
+
+      .fa {
+        opacity: 1;
+      }
+
+      span {
+        animation: checked 0.5s ease-in-out forwards;
+      }
+    }
+
+    .fa-pencil {
+      color: orange;
+    }
+
+    .fa-trash {
+      color: darkred;
+    }
+
+    &.completed {
+      text-decoration: line-through;
+
+      span {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+div.server-down {
+  strong {
+    color: red;
+    font-size: 2em;
+  }
+
+  .fa {
+    margin-left: 10px;
+    font-size: 2em;
+    color: red;
+  }
+}
+
+@media (max-width: 850px) {
+  .list-display {
+    width: 75% !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .list-display {
+    width: 95% !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .list-display {
+    width: 100% !important;
+  }
+}

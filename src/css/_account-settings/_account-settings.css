@@ -1,0 +1,48 @@
+$main-blue: #03a9f4;
+$strong-bounce: cubic-bezier(0, 0.66, 0.39, 2.01);
+
+div {
+  position: relative;
+  left: -1.5px;
+}
+
+h1 {
+  color: $main-blue;
+  padding: 15px;
+  border-bottom: 2px solid black;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+.coming-soon {
+  text-align: center;
+  border: none;
+  font-size: 4em;
+
+  strong {
+    color: limegreen;
+  }
+}
+
+.leave-account {
+  transition: all 1s ease-in-out;
+  color: limegreen;
+  width: 150px;
+  padding: 10px;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+
+    &::before {
+      content: '>';
+    }
+  }
+}
+
+a {
+  color: red;
+  text-decoration: none;
+}

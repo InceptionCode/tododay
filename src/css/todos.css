@@ -1,0 +1,31 @@
+//variables
+$main-blue: #03a9f4;
+$strong-bounce: cubic-bezier(0, 0.66, 0.39, 2.01);
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway');
+
+html {
+    font: {
+        family: "Raleway", sans-serif;
+        size: 16px;
+    }
+}
+
+div.todo-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+//keyframes
+@keyframes checked {
+  0% {
+    opacity: 0.3;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+}

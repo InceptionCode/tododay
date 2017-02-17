@@ -1,0 +1,101 @@
+/* variables */
+$main-blue: #03a9f4;
+$strong-bounce: cubic-bezier(0, 0.66, 0.39, 2.01);
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway');
+
+div.panel {
+  @util position(relative, null null 10px null);
+  width: 100%;
+  height: 30px;
+  padding: 20px;
+}
+
+div.panel-style {
+  background: $main-blue;
+}
+
+nav {
+  @util position(relative, null null 5px null);
+  box: horizontal center;
+  padding: 10px;
+
+  li {
+    list-style: none;
+    width: 150px;
+    padding: 5px;
+  }
+}
+
+.nav-style {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+
+  li:hover {
+    cursor: pointer;
+    border-top: white 2px solid;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .logout {
+    position: absolute;
+    left: 30px;
+  }
+
+  i {
+    position: absolute;
+    right: 20px;
+    font-size: 1.5em;
+
+    &:hover {
+      cursor: pointer;
+      color: grey;
+    }
+  }
+}
+
+.settings {
+  @util size(200px, 80px);
+  opacity: 0;
+  position: relative;
+  bottom: 20px;
+  z-index: 1;
+  float: right;
+  background: white;
+  box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.5);
+  transform: translateY(-90px);
+  transition: all 0.5s $strong-bounce;
+  pointer-events: none;
+
+  li {
+    list-style: none;
+    font-size: 18px;
+    padding: 10px;
+
+    &:hover {
+      cursor: pointer;
+      color: gray;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      cursor: pointer;
+      color: gray;
+    }
+  }
+}
+
+.show-settings {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}

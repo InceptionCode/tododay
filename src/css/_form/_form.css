@@ -1,0 +1,76 @@
+/* variables */
+$main-blue: #03a9f4;
+$strong-bounce: cubic-bezier(0, 0.66, 0.39, 2.01);
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway');
+
+html {
+  font: {
+    family: "Raleway", sans-serif;
+    size: 16px;
+  }
+}
+
+.todo-form {
+  margin: 40px 0 20px;
+
+  input {
+    @util size(350px 30px);
+    margin-right: 15px;
+    @extend html;
+    border: none;
+    border-bottom: 2px solid fade-out($main-blue, 0.5);
+
+    &:focus {
+      outline: none;
+      border-bottom: $main-blue 2px solid;
+    }
+  }
+
+  button.add {
+    width: 120px;
+    padding: 5px;
+    font-size: 18px;
+    letter-spacing: 1.3px;
+  }
+
+  .--style {
+    color: white;
+    background: $main-blue;
+    border: none;
+    box-shadow: 1px 8px 10px rgba(0, 0, 0, 0.3);
+    transition: all 300ms $strong-bounce;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      transform: scale(1.06);
+      box-shadow: 1px 17px 10px -5px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+  }
+
+  #hide {
+    opacity: 0.4;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  #show {
+    opacity: 1;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .todo-form button.add {
+    margin-top: 15px;
+  }
+}

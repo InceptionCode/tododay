@@ -1,0 +1,234 @@
+$main-blue: #03a9f4;
+$strong-bounce: cubic-bezier(0, 0.66, 0.39, 2.01);
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway');
+
+div.openning {
+  @util position(relative null 8px 8px null);
+  @util size(500px 100vh);
+  display: inline-block;
+  padding: 20px 40px 150px;
+  background: $main-blue;
+  color: white;
+
+  h1,
+  h2 {
+    text-align: center;
+    border: none;
+    color: white;
+  }
+
+  h1 {
+    font-size: 4em;
+  }
+
+  i {
+    @util position(relative null null 380px 480px);
+    padding: 25px;
+    font-size: 8.5em;
+    background: $main-blue;
+    border-radius: 50%;
+  }
+
+  blockquote {
+    font-size: 24px;
+    text-align: left;
+    line-height: 1.5;
+    margin: 80px 30px;
+
+    cite {
+      float: right;
+    }
+  }
+}
+
+section.signin-form {
+  float: right;
+  height: 100vh;
+
+  form {
+    margin: 100px 175px 20px;
+  }
+
+  input {
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 20px;
+    font-size: 18px;
+
+    &:focus {
+      outline: none;
+      border: 1px solid fade-out(gray, 0.7);
+      border-bottom: 2px solid $main-blue;
+    }
+  }
+
+  a.forgot {
+    position: relative;
+    left: 150px;
+    text-decoration: none;
+  }
+}
+
+button.submit-signin {
+  transition: all 0.3s $strong-bounce;
+  width: 150px;
+  padding: 10px;
+  margin: 20px 140px;
+  border: 2px solid white;
+  background: $main-blue;
+  color: white;
+  font-size: 16px;
+  box-shadow: 1px 8px 10px rgba(0, 0, 0, 0.3);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    transform: scale(1.06);
+    box-shadow: 1px 17px 10px -5px rgba(0, 0, 0, 0.3);
+    color: $main-blue;
+    background: white;
+    border: 2px solid $main-blue;
+    cursor: pointer;
+  }
+}
+
+button.sign-up {
+  @extend button.submit-signin;
+  margin: 20px 150px;
+  width: 200px;
+  padding: 15px;
+  font-size: 18px;
+  background: white;
+  border: 2px solid $main-blue;
+  color: $main-blue;
+
+  &:hover {
+    border: 2px solid white;
+    background: $main-blue;
+    color: white;
+  }
+}
+
+.signin-response {
+  opacity: 0;
+  width: 500px;
+  text-align: center;
+  margin: 200px auto 0;
+  color: red;
+  transition: opacity 0.3s ease-in-out;
+
+  p {
+    font-size: 18px;
+  }
+
+  &#show-response {
+    opacity: 1;
+  }
+}
+
+/* Sign Up page */
+
+section.signup-form {
+  @util position(relative null 10px 8px null);
+  @util size(100% 100vh);
+  box: vertical center;
+  background: $main-blue;
+  padding: 20px 40px;
+
+  h1 {
+    text-align: center;
+    font-size: 4em;
+    letter-spacing: 5px;
+    text-transform: capitalize;
+    color: white;
+  }
+
+  form {
+    @util size(960px 450px);
+    margin: 50px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 4px;
+
+    div {
+      width: 530px;
+      margin: 10px auto;
+    }
+
+    input {
+      width: 200px;
+      padding: 20px;
+      margin: 40px 10px;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+        border: 1px solid gray;
+        border-bottom: 2px solid $main-blue;
+      }
+    }
+
+    input[type="email"] {
+      width: 400px;
+    }
+
+    button {
+      @extend button.submit-signin;
+      margin: 0 380px;
+    }
+  }
+
+  .unconfirmed {
+    border: 1px solid red;
+    background: pink;
+  }
+
+  p {
+    text-align: center;
+    color: red;
+  }
+}
+
+/* Responsiveness */
+
+@media (max-width: 1400px) {
+  section.signin-form {
+    box: vertical center;
+    float: none !important;
+
+    .signin-response {
+      margin: 150px 0 0 !important;
+    }
+  }
+
+  div.openning {
+    box: vertical center;
+    width: 100% !important;
+
+    i {
+      left: 0 !important;
+      bottom: -90px !important;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  section.signup-form form {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 740px) {
+  div.openning i {
+    bottom: -50px !important;
+  }
+}
+
+@media (max-width: 590px) {
+  div.openning blockquote {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}

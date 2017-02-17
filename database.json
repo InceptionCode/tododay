@@ -1,0 +1,9 @@
+{
+  "dev": {
+    "driver": "pg",
+    "user": "darrellwashington",
+    "password": "darrellwashington17",
+    "host": "localhost",
+    "database": "todosdb"
+  }
+}
