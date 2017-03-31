@@ -11,10 +11,22 @@ html {
 }
 
 div.todo-list {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
+}
+
+div.user-help {
+    background-color: limegreen;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 3px 5px 10px 2px rgba(0,0,0,0.5);
+    transition: all;
+    &.removed {
+      animation: removed 1.5s ease-in-out forwards;
+    }
 }
 
 //keyframes
@@ -29,3 +41,22 @@ div.todo-list {
   }
 
 }
+@keyframes removed {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-90px);
+  }
+
+}
+
+/* Mobile */
+@media(max-width: 450px) {
+  div.todo-list {
+    left: 20px;
+  }
+}
+

@@ -1,9 +1,9 @@
 $main-blue: #03a9f4;
 $strong-bounce: cubic-bezier(0, 0.66, 0.39, 2.01);
 
-div {
+div.account-div {
   position: relative;
-  left: -1.5px;
+  left: -7.5px;
 }
 
 h1 {

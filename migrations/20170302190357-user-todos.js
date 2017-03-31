@@ -14,16 +14,18 @@ exports.setup = function(options, seedLink) {
   seed = seedLink;
 };
 
-exports.up = function (db, callback) {
-  db.createTable('tags', {
-    id: { type: 'int', primaryKey: true },
-    name: 'string'
-  }, callback);
+exports.up = function(db, callback) {
+ db.createTable('user_todos', {
+   id: { type: 'int', primaryKey: true, autoIncrement: true },
+   description: 'string',
+   completed: 'int',
+   userid: 'int'
+ }, callback);
+
 };
 
-
 exports.down = function(db, callback) {
-  db.dropTable('tags', callback);
+  return null;
 };
 
 exports._meta = {

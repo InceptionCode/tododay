@@ -15,14 +15,15 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db, callback) {
- db.createTable('users',{
-    id: {type: 'int', primaryKey: true, autoIncrement: true},
-    email: 'string',
-    hash: 'string'
+ db.addIndex('user_todos', 'userid', 'userid', callback);
+ db.addForeignKey('user_todos', 'users', 'user_todos_userid_foreign',
+ {
+   'userid': 'id'
  }, callback);
+
 };
 
-exports.down = function(db, callback) {
+exports.down = function(db) {
   return null;
 };
 

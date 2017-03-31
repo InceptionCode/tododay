@@ -8,6 +8,7 @@
     transition: all 0.5s ease-in-out;
     padding: 10px;
     min-width: 170px;
+    text-align: center;
 
     span {
       @util size(40px, 20px);

@@ -2,7 +2,7 @@
   "dev": {
     "driver": "pg",
     "user": "darrellwashington",
-    "password": "darrellwashington17",
+    "password": "businesswash17",
     "host": "localhost",
     "database": "todosdb"
   }

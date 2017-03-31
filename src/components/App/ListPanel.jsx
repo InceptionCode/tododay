@@ -19,7 +19,7 @@ export default function ListPanel ( props ) {
           </nav>
           <ul className = "settings">
             <li onClick = {props.removeAuthorization}>
-              <Link to = "/">Logout</Link>
+              Logout
             </li>
             <li>
               <Link to = "/account-settings"> Account Settings </Link>

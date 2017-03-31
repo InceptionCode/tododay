@@ -2,7 +2,7 @@ import React , { Component } from "react";
 import ListPanel from "./ListPanel.jsx";
 import TodoForm from "./TodoForm.jsx";
 import Todos from "./Todos.jsx";
-const url ="http://localhost:3000/todos?completed=0";
+const url ="http://67.205.174.156:3000/todos?completed=0";
 
 export default class TodoList extends Component  {
 
@@ -13,22 +13,15 @@ export default class TodoList extends Component  {
     }
 
     render () {
-
-        return (
-          <div className ="todo-list">
-          <ListPanel removeAuthorization= {this.props.removeAuthorization}
-            showSettings= {this.props.showSettings}/>
-          <TodoForm textarea = {this.props.textarea} option = {this.props.option}
-            addTodo = {this.props.addTodo} onChange = {this.props.onChange}/>
-            <ul className = "list-display">
-              { (this.props.todos.map) ?
+	const renderList = 
+               (this.props.todos.map) ?
                 this.props.todos.map( todo => {
 
                     return (
                       <Todos key = {todo.id} todo = {todo} textarea = {this.props.textarea}
                         onChange = {this.props.onChange} addTodo = {this.props.addTodo}
                       deleteTodo = {this.props.deleteTodo} editTodo = {this.props.editTodo}
-                      completeTodo = {this.props.completeTodo}/>
+                      completeTodo = {this.props.completeTodo} removeHelp = {this.props.removeHelp}/>
                     );
 
                 } )
@@ -36,9 +29,28 @@ export default class TodoList extends Component  {
                     <strong>{this.props.todos}</strong>
                     <i className="fa fa-server" aria-hidden="true"></i>
                     <i className="fa fa-frown-o" aria-hidden="true"></i>
-                 </div>
-              }
+                 </div>;
+     
+
+        const renderUserHelp = 
+            (this.props.todos.length > 0) ?
+	      <div className = {this.props.helperClass}>
+                      Press on the To-Do item in order to:
+                              	      <br/>
+		    Mark item complete, Edit item, and Delete item
+	      </div>
+            : <div></div>;
+              
+        return (
+          <div className ="todo-list">
+          <ListPanel removeAuthorization= {this.props.removeAuthorization}
+            showSettings= {this.props.showSettings}/>
+          <TodoForm textarea = {this.props.textarea} option = {this.props.option}
+            addTodo = {this.props.addTodo} onChange = {this.props.onChange}/>
+            <ul className = "list-display">
+              { renderList }
             </ul>
+            { renderUserHelp }
             { this.props.children }
           </div>
         );

@@ -1,32 +1,20 @@
 import React, { Component } from "react";
-import { Link, Router } from "react-router";
+import { Link } from "react-router";
 import axios from "axios";
 import jwt from "jsonwebtoken";
 import ListPanel from "./ListPanel.jsx";
 
 export default class AccountSettings extends Component {
-
-    componentWillMount () {
-
-        if( !this.props.token && !this.props.isAuthenticated ) {
-
-            return this.context.router.push( "/" );
-
-        }else {
-
-            return;
-
-        }
-
-    }
+    
     render () {
 
         const user = jwt.decode(this.props.token),
             userEmail = user.email,
             userPassword = user.password;
         return (
-        <div>
-          <ListPanel />
+        <div className = "account-div">
+          <ListPanel removeAuthorization= {this.props.removeAuthorization}
+            showSettings= {this.props.showSettings}/>
           <h1>Account Settings</h1>
           <h2> Your Email </h2>
           <p> {userEmail} </p>

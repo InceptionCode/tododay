@@ -14,15 +14,11 @@ exports.setup = function(options, seedLink) {
   seed = seedLink;
 };
 
-exports.up = function(db, callback) {
- db.createTable('users',{
-    id: {type: 'int', primaryKey: true, autoIncrement: true},
-    email: 'string',
-    hash: 'string'
- }, callback);
+exports.up = function(db,callback) {
+ db.addIndex('users', 'emails', 'email', true, callback);
 };
 
-exports.down = function(db, callback) {
+exports.down = function(db) {
   return null;
 };
 

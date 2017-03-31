@@ -5,7 +5,7 @@ export default function TodoList ( props ) {
 
     const { editTodo, deleteTodo, completeTodo, todo } =props;
     return (
-      <div>
+      <div onClick = {props.removeHelp}>
         <li onClick = {( e )=> completeTodo( e, todo.id )} key = {todo.id}>
           <span />
           {todo.description}

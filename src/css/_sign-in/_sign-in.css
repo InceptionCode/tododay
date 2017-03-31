@@ -21,6 +21,18 @@ div.openning {
     font-size: 4em;
   }
 
+  p { 
+   text-align: center;
+
+   a {
+    color: #22d622;
+    &:hover {
+       font-weight: bold;
+    }
+   }
+
+  }
+
   i {
     @util position(relative null null 380px 480px);
     padding: 25px;
@@ -46,7 +58,7 @@ section.signin-form {
   height: 100vh;
 
   form {
-    margin: 100px 175px 20px;
+    margin: 100px 0 20px;
   }
 
   input {
@@ -132,7 +144,7 @@ button.sign-up {
 
 section.signup-form {
   @util position(relative null 10px 8px null);
-  @util size(100% 100vh);
+  @util size(100vw 100%);
   box: vertical center;
   background: $main-blue;
   padding: 20px 40px;
@@ -146,19 +158,19 @@ section.signup-form {
   }
 
   form {
-    @util size(960px 450px);
+    @util size(75vw 450px);
     margin: 50px 0;
     padding: 20px;
     background: white;
     border-radius: 4px;
 
     div {
-      width: 530px;
+      width: 680px;
       margin: 10px auto;
     }
 
     input {
-      width: 200px;
+      width: 19vw;
       padding: 20px;
       margin: 40px 10px;
       font-size: 16px;
@@ -171,12 +183,12 @@ section.signup-form {
     }
 
     input[type="email"] {
-      width: 400px;
+      width: 45.5vw;
     }
 
     button {
       @extend button.submit-signin;
-      margin: 0 380px;
+      margin: 0 31.5vw;
     }
   }
 
@@ -200,29 +212,46 @@ section.signup-form {
 
     .signin-response {
       margin: 150px 0 0 !important;
+
     }
   }
 
-  div.openning {
-    box: vertical center;
-    width: 100% !important;
-
-    i {
-      left: 0 !important;
-      bottom: -90px !important;
-    }
+  div.openning i {
+    left: 0 !important;
+    bottom: -90px !important; 
   }
 }
 
 @media (max-width: 1100px) {
   section.signup-form form {
     margin-right: 40px;
+    button {
+      margin: 0 13vw!important;
+    }
+  }
+  div.openning {
+    box: vertical center;
+    width: 100vw !important;
+    height: 650px !important;
+    
+    i {
+     bottom: -55px !important;
+    } 
   }
 }
 
-@media (max-width: 740px) {
-  div.openning i {
-    bottom: -50px !important;
+@media (max-width: 768px) {
+  h1 {
+   font-size: 3em!important;
+  }
+  div.openning {
+    height: 850px !important; 
+    blockquote {
+      font-size: 20px!important;
+    }
+    i {
+     bottom: -320px !important;
+    }
   }
 }
 
@@ -230,5 +259,72 @@ section.signup-form {
   div.openning blockquote {
     margin-top: 40px;
     margin-bottom: 40px;
+  } 
+  section.signin-form { 
+    align-items: flex-end!important;
+
+    form {
+      margin: 100px -99px 20px;
+    }
+
+    input {
+      width: 250px!important;
+    }
   }
+  section.signup-form input {
+    display: block!important;
+    margin: 10px!important;
+    width: 52.5vw!important;
+  }
+}
+
+@media (max-width: 500px) {
+  div.openning {
+    height: 800px!important;
+    blockquote {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    i {
+     bottom: -255px!important;
+    }
+    button.sign-up {
+      margin: 20px;
+    }
+  }
+  section.signin-form form {
+    margin-left: 265px !important;
+  } 
+
+}
+
+@media (max-width: 400px) {
+  div.openning {
+    height: 900px!important;
+    
+    i {
+     bottom: -275px!important;
+    }
+  }
+
+}
+@media (max-width: 375px) {
+ section.signin-form form {
+   margin-left: 300px !important;
+ }
+}
+
+@media (max-width: 320px) {
+  div.openning { 
+    h1 {
+     font-size: 2em!important;
+    } 
+
+    i {
+     bottom: -255px!important;
+    }
+  }
+ section.signin-form form {
+   margin: 100px -134px 20px!important;
+ }
 }

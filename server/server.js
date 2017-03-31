@@ -7,6 +7,7 @@ const express = require( 'express' ),
   bodyParser =require( 'body-parser' ),
   knexConfig ={
     client: 'pg',
+    debug: true,
     connection: {
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
@@ -16,7 +17,7 @@ const express = require( 'express' ),
   },
   pg =require( 'knex' )( knexConfig ),
   bcrypt =require( 'bcryptjs' ),
-  saltRounds =process.env.ROUNDS,
+  saltRounds =parseInt(process.env.ROUNDS),
   jwt =require( 'jsonwebtoken' ),
   errorHandler = function ( res, { name, message } ) {
 
@@ -31,16 +32,19 @@ const express = require( 'express' ),
     }
 
   };
-
 //-------------------------------------------=
 app.use(
   bodyParser.json(),
-  cors()
-  // expressJWT( { secret: 'supersecretpassword' } )
-  //   .unless( { path: [ '/signup', '/todos', '/auth' ] } )
+  cors(),
+  expressJWT( { secret: process.env.SECRET } )
+     .unless( { path: [ '/signup', '/auth' ] } )
 
+  //Check if token is available and if user is authorized.
+  
+  //Then validate the token and push user to proper "Todo-List".
+
+  //If token is not available block user from proceeding to "Todo-list"
 );
-
 app.get( '/todos', function ( req, res ) {
 
   let query ={
@@ -108,7 +112,7 @@ const checkUserEmail =( result ) => {
     } else {
 
       const message =`Whoops, looks like that's not the right password.
-      Try again.`,
+      Relax, take your time, and try again.`,
         error =new Error( message );
       error.name =401;
       throw error;
@@ -133,15 +137,20 @@ app.post( '/auth', function ( req, res ) {
 const addDatabaseUser =function ( email, hash, res ) {
 
   const user ={ email, hash };
-  pg( 'users' ).insert( user )
+  pg( 'users' ).returning('id').insert( user )
     .then( result => {
-
-      res.status( 201 ).send( result );
+      
+      let id = result[0];
+      sendToken({id, email, hash, res});
 
     }, error => {
+	if ( error ) {
 
-      let message ='UhOh I believe that email already exist. Try signing in.';
-      res.status( 400 ).send( { message, error } );
+		let message ='UhOh I believe that email already exist. Try signing in.',
+		err = new Error( message );
+		err.name =400;
+		errorHandler( res, err );
+	      }
 
     } );
 
@@ -210,4 +219,4 @@ app.put( '/todos/:updateId', function ( req, res ) {
 
 } );
 
-app.listen( 3000 );
+app.listen(3000);
